@@ -6,14 +6,15 @@ from email.message import EmailMessage
 from dotenv import load_dotenv
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-
 load_dotenv()
 
-sender_email = os.getenv('SENDER_EMAIL')
-sender_password = os.getenv('SENDER_PASSWORD')
+sender_email = os.getenv('ADMIN_EMAIL')
+sender_password = os.getenv('ADMIN_PASSWORD')
+print(f"Sender Email: {sender_email}")
+print(f"Sender Password: {sender_password}")
+
 # URL of the webpage you want to scrape
-url = 'https://dining.umich.edu/menus-locations/dining-halls/mosher-jordan/'
+url = 'https://dining.umich.edu/menus-locations/dining-halls/'
 urls = ['https://dining.umich.edu/menus-locations/dining-halls/' + s for s in ["Bursley", "East Quad", "Markley", "Mosher-Jordan", "North Quad", "South Quad", "Twigs at Oxford"]]
 
 emails = ["oliverwu@umich.edu"]
@@ -26,7 +27,7 @@ def send_email(msg):
         message['From'] = sender_email
         message['To'] = email
         message.set_content(msg)
-
+        print(sender_email)
         # Connect to the SMTP server and send the email
         try:
             server = smtplib.SMTP('smtp.gmail.com', 587)
