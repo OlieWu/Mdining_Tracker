@@ -19,11 +19,10 @@ urls = ['https://dining.umich.edu/menus-locations/dining-halls/' + s for s in ["
 emails = ["oliverwu@umich.edu"]
 
 def send_email(msg):
-    sender_email = "oliver.wu@uvsamidwest.org"  # Your email address
-    sender_password = "Lukan134!"  # Your email password
+
     for email in emails:    
         message = EmailMessage()
-        message['Subject'] = "Chocolate Glazed Donuts Found!"
+        message['Subject'] = "Chocolate Chunk Cookies Found!"
         message['From'] = sender_email
         message['To'] = email
         message.set_content(msg)
